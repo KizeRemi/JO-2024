@@ -22,9 +22,6 @@ class PaysController extends Controller
     	$form->handleRequest($request);
 
     	if($form->isSubmitted() && $form->isValid()){
-            $file = $pays->getDrapeau();
-            $fileName = $this->container->get('remi.file_uploader')->upload($file);
-            $pays->setDrapeau($fileName);
     		$em->persist($pays);
     		$em->flush();
     		$this->addFlash('notice', 'Enregistré');

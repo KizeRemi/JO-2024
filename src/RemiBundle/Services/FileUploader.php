@@ -25,4 +25,9 @@ class FileUploader
     {
         return $this->targetDir;
     }
+
+    public function remove(UploadedFile $file)
+    {
+        unlink ($file);
+    }
 }

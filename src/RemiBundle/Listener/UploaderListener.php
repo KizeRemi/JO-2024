@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\Listener;
+namespace RemiBundle\Listener;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use AppBundle\Entity\Drapeau;
-use AppBundle\Services\FileUploader;
+use RemiBundle\Entity\Pays;
+use RemiBundle\Services\FileUploader;
 
-class UploadListener
+class UploaderListener
 {
     private $uploader;
     private $fileName;
@@ -34,18 +34,16 @@ class UploadListener
 
     private function uploadFile($entity)
     {
-        // upload only works for Product entities
-        if (!$entity instanceof Product) {
+        if (!$entity instanceof Pays) {
             return;
         }
 
-        $file = $entity->getBrochure();
+        $file = $entity->getDrapeau();
 
-        // only upload new files
         if ($file instanceof UploadedFile) {
             $fileName = $this->uploader->upload($file);
         }
 
-        $entity->setBrochure($fileName);
+        $entity->setDrapeau($fileName);
     }
 }

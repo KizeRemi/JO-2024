@@ -39,7 +39,7 @@ services:
             $targetDir: '%drapeaux_directory%'
         public: true
 
-    RemiBundle\EventListener\UploadListener:
+    RemiBundle\Listener\UploaderListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
