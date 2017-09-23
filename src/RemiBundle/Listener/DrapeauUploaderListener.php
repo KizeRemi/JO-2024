@@ -8,7 +8,7 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use RemiBundle\Entity\Pays;
 use RemiBundle\Services\FileUploader;
 
-class UploaderListener
+class DrapeauUploaderListener
 {
     private $uploader;
     private $fileName;

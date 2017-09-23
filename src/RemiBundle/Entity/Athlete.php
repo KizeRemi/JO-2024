@@ -2,6 +2,7 @@
 namespace RemiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -18,8 +19,14 @@ class Athlete {
     private $id;
 
     /**
-    * @ORM\Column(name="nom", type="string", length=100, nullable=false)
-    */
+     * @ORM\Column(name="nom", type="string", length=100, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 20,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     */
     private $nom;
 
     /**

@@ -2,19 +2,32 @@
 {% block title %}Liste des athletes{% endblock %}
 
 {% block body %}
-	<h1>Liste des athlètes</h1>
-	{% for athlete in athletes %}
-		<div>
-			<a href="{{ path('remi_athlete_delete', { 'id' : athlete.id } )}}"><button>Supprimer</button></a>
-			{{ athlete.nom }} 
-			{{ athlete.prenom }} 
-			{{ athlete.dateNaissance|date("d/m/Y") }}
-			<a href="{{ path('remi_athlete_show', { 'id' : athlete.id } )}}">
-				<button>Modifier</button>
-			</a>
-		</div>
-	{% endfor %}
-
+    <h1>{{ 'athletes.list'|trans }}</h1>
+    <table border=1>
+    	<thead>
+    		<tr>
+    			<th>Nom</th>
+    			<th>Prénom</th>
+    			<th>Actions</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+		{% for athlete in athletes %}
+			<tr>
+				<td>{{ athlete.nom }}</td>
+				<td>{{ athlete.prenom }}</td>
+				<td>
+					<a href="{{ path('remi_athlete_delete', { 'id' : athlete.id } )}}">
+						<button>Supprimer</button>
+					</a>
+					<a href="{{ path('remi_athlete_show', { 'id' : athlete.id } )}}">
+						<button>Modifier</button>
+					</a>
+				</td>
+			</tr>
+		{% endfor %}    		
+    	</tbody>
+    </table><br>
 	{{ form_start(form) }}
 	{{ form_end(form) }}
 

@@ -18,21 +18,21 @@ class AthleteController extends Controller
      */
     public function indexAction(Request $request)
     {
-    	$em = $this->getDoctrine()->getEntityManager();
-    	$athlete = new Athlete();
+        $em = $this->getDoctrine()->getEntityManager();
+        $athlete = new Athlete();
 
-    	$form = $this->createForm(AthleteType::class, $athlete);
-    	$form->handleRequest($request);
+        $form = $this->createForm(AthleteType::class, $athlete);
+        $form->handleRequest($request);
 
-    	$athletes = $em->getRepository('RemiBundle:Athlete')->findAll();
-    	if($form->isSubmitted() && $form->isValid()){
-    		$em->persist($athlete);
-    		$em->flush();
-    		$this->addFlash('notice', 'Enregistré');
-    	}
+        if($form->isSubmitted() && $form->isValid()){
+            $em->persist($athlete);
+            $em->flush();
+        }
+
+        $athletes = $em->getRepository('RemiBundle:Athlete')->findAll();
         return $this->render('RemiBundle:Athlete:index.html.twig', [
-        	'form'     => $form->createView(),
-        	'athletes' => $athletes
+            'form'     => $form->createView(),
+            'athletes' => $athletes
         ]);
     }
 
@@ -41,21 +41,20 @@ class AthleteController extends Controller
      */
     public function showAction(Request $request, $id)
     {
-    	$em = $this->getDoctrine()->getEntityManager();
-    	$athlete = $em->getRepository('RemiBundle:Athlete')->find($id);
+        $em = $this->getDoctrine()->getEntityManager();
+        $athlete = $em->getRepository('RemiBundle:Athlete')->find($id);
 
-    	$form = $this->createForm(AthleteType::class, $athlete);
-    	$form->handleRequest($request);
+        $form = $this->createForm(AthleteType::class, $athlete);
+        $form->handleRequest($request);
 
-    	if($form->isSubmitted() && $form->isValid()){
-    		$em->persist($athlete);
-    		$em->flush();
-    		$this->addFlash('notice', 'Enregistré');
+        if($form->isSubmitted() && $form->isValid()){
+            $em->persist($athlete);
+            $em->flush();
     	}
 
         return $this->render('RemiBundle:Athlete:show.html.twig', [
-        	'form'     => $form->createView(),
-        	'athlete'  => $athlete
+            'form'     => $form->createView(),
+            'athlete'  => $athlete
         ]);
     }
 
