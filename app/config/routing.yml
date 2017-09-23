@@ -1,0 +1,8 @@
+remi:
+    resource: "@RemiBundle/Controller/"
+    type:     annotation
+    prefix:   /remi
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

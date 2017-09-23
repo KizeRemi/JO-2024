@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des disciplines{% endblock %}
+{% block body %}
+	{% for discipline in disciplines %}
+		<div>
+			<a href="{{ path('remi_discipline_delete', { 'id' : discipline.id } )}}"><button>Supprimer</button></a>
+			{{ discipline.nom }} 
+			<a href="{{ path('remi_discipline_show', { 'id' : discipline.id } )}}">
+				<button>Modifier</button>
+			</a>
+		</div>
+	{% endfor %}
+	{{ form_start(form) }}
+		
+	{{ form_end(form) }}
+{% endblock %}

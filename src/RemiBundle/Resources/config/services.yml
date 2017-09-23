@@ -1,0 +1,4 @@
+services:
+#    remi.example:
+#        class: RemiBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
