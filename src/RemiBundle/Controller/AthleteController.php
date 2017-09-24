@@ -10,9 +10,7 @@ use RemiBundle\Form\AthleteType;
 
 class AthleteController extends Controller
 {
-    //TODO: haslifecyclecallbacks
-    //TODO: flashbag
-    
+
     /**
      * @Route("/athletes", name="remi_athlete_index")
      */
@@ -27,6 +25,7 @@ class AthleteController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $em->persist($athlete);
             $em->flush();
+            $this->addFlash('notice', $this->get('translator')->trans('notice.athlete.add'));
         }
 
         $athletes = $em->getRepository('RemiBundle:Athlete')->findAll();
@@ -50,6 +49,7 @@ class AthleteController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $em->persist($athlete);
             $em->flush();
+            $this->addFlash('notice', $this->get('translator')->trans('notice.athlete.update'));
     	}
 
         return $this->render('RemiBundle:Athlete:show.html.twig', [
@@ -68,6 +68,7 @@ class AthleteController extends Controller
 
         $em->remove($athlete);
         $em->flush();
+        $this->addFlash('notice', $this->get('translator')->trans('notice.athlete.delete'));
 
         return $this->redirectToRoute('remi_athlete_index');
     }

@@ -5,13 +5,12 @@ namespace RemiBundle\Listener;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use RemiBundle\Entity\Pays;
+use RemiBundle\Entity\Athlete;
 use RemiBundle\Services\FileUploader;
 
-class DrapeauUploaderListener
+class PhotoUploaderListener
 {
     private $uploader;
-    private $fileName;
 
     public function __construct(FileUploader $uploader)
     {
@@ -28,39 +27,39 @@ class DrapeauUploaderListener
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
-        if (!$entity instanceof Pays) {
+
+        if (!$entity instanceof Athlete) {
             return;
         }
-        
-        $oldPathFile = $args->getOldValue('drapeau');
+
+        $oldPathFile = $args->getOldValue('photo');
 
         if($oldPathFile){
             $this->uploader->remove($oldPathFile);
         }
-
         $this->uploadFile($entity);
     }
 
     private function uploadFile($entity)
     {
-        if (!$entity instanceof Pays) {
+        if (!$entity instanceof Athlete) {
             return;
         }
 
-        $file = $entity->getDrapeau();
+        $file = $entity->getPhoto();
         if ($file instanceof UploadedFile) {
             $fileName = $this->uploader->upload($file);
         }
 
-        $entity->setDrapeau($fileName);
+        $entity->setPhoto($fileName);
     }
 
     public function postRemove(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Pays) {
-            $this->uploader->remove($entity->getDrapeau());
+        if ($entity instanceof Athlete) {
+            $this->uploader->remove($entity->getPhoto());
         }
     }
 }

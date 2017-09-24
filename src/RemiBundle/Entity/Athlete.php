@@ -20,36 +20,59 @@ class Athlete {
 
     /**
      * @ORM\Column(name="nom", type="string", length=100, nullable=false)
-     * @Assert\Length(
-     *      min = 5,
-     *      max = 20,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * @Assert\NotBlank(
+     *      message = "form.error.notblank"
      * )
      */
     private $nom;
 
     /**
-    * @ORM\Column(name="prenom", type="string", length=100, nullable=false)
-    */
+     * @ORM\Column(name="prenom", type="string", length=100, nullable=false)
+     * @Assert\NotBlank(
+     *      message = "form.error.notblank"
+     * )
+     */
     private $prenom;
 
     /**
-    * @ORM\Column(name="date_naissance", type="date", length=100, nullable=true)
-    */
+     * @ORM\Column(name="date_naissance", type="date", length=100, nullable=false)
+     * @Assert\NotBlank(
+     *      message = "form.error.notblank"
+     * )
+     */
     private $dateNaissance;
 
     /**
-    * @ORM\ManyToOne(targetEntity="RemiBundle\Entity\Pays")
-    * @ORM\JoinColumn(name="pays", referencedColumnName="id")
-    */
+     * @ORM\ManyToOne(targetEntity="RemiBundle\Entity\Pays", inversedBy="athletes")
+     * @ORM\JoinColumn(name="pays", referencedColumnName="id", onDelete="SET NULL")
+     * @Assert\NotBlank(
+     *      message = "form.error.notblank"
+     * )
+     */
     private $pays;
 
     /**
-    * @ORM\ManyToOne(targetEntity="RemiBundle\Entity\Discipline")
-    * @ORM\JoinColumn(name="discipline", referencedColumnName="id")
-    */
+    * @ORM\ManyToOne(targetEntity="RemiBundle\Entity\Discipline", inversedBy="athletes")
+     * @ORM\JoinColumn(name="discipline", referencedColumnName="id")
+     * @Assert\NotBlank(
+     *      message = "form.error.notblank"
+     * )
+     */
     private $discipline;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(
+     *     message="form.error.notblank"
+     *  )
+     * @Assert\File(
+     *     maxSize = "4096k",
+     *     mimeTypes = {"image/png", "image/jpeg"},
+     *     mimeTypesMessage = "form.error.filepng"
+     * )
+     */
+    private $photo;
 
     /**
      * Get id
@@ -59,6 +82,18 @@ class Athlete {
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
     }
 
     /**

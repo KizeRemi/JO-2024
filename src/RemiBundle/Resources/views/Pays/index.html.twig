@@ -1,18 +1,21 @@
-{% extends 'base.html.twig' %}
-{% block title %}Liste des Pays{% endblock %}
+{% extends 'RemiBundle::base.html.twig' %}
+{% block title %}{{ 'countries.list'|trans }}{% endblock %}
+
 {% block body %}
     <h1>{{ 'countries.list'|trans }}</h1>
     <table border=1>
         <thead>
             <tr>
                 <th>Nom</th>
+                <th>Drapeau</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for pays in tousLesPays %}
             <tr>
-                <td>{{ pays.nom }}</td>
+                <td>{{ pays.nom }}</td> 
+                <td><img src="{{ asset('uploads/drapeaux/'~pays.drapeau) }}" /></td>
                 <td>
                     <a href="{{ path('remi_pays_delete', { 'id' : pays.id } )}}">
                         <button>Supprimer</button>

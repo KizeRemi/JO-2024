@@ -15,5 +15,6 @@ parameters:
     mailer_user: ~
     mailer_password: ~
     drapeaux_directory: '%kernel.project_dir%/web/uploads/drapeaux'
+    photos_directory: '%kernel.project_dir%/web/uploads/photos'
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt

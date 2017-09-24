@@ -2,6 +2,7 @@
 namespace RemiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -18,9 +19,17 @@ class Discipline {
     protected $id;
 
     /**
-    * @ORM\Column(name="nom", type="string", length=100, nullable=false)
-    */
+     * @ORM\Column(name="nom", type="string", length=60, nullable=false)
+     * @Assert\NotBlank(
+     *      message = "form.error.notblank"
+     * )
+     */
     private $nom;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Athlete", mappedBy="discipline", orphanRemoval=true)
+     */
+    private $athletes;
 
     /**
      * Get id
@@ -54,5 +63,46 @@ class Discipline {
     public function getNom()
     {
         return $this->nom;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->athletes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add athlete
+     *
+     * @param \RemiBundle\Entity\Athlete $athlete
+     *
+     * @return Discipline
+     */
+    public function addAthlete(\RemiBundle\Entity\Athlete $athlete)
+    {
+        $this->athletes[] = $athlete;
+
+        return $this;
+    }
+
+    /**
+     * Remove athlete
+     *
+     * @param \RemiBundle\Entity\Athlete $athlete
+     */
+    public function removeAthlete(\RemiBundle\Entity\Athlete $athlete)
+    {
+        $this->athletes->removeElement($athlete);
+    }
+
+    /**
+     * Get athletes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAthletes()
+    {
+        return $this->athletes;
     }
 }

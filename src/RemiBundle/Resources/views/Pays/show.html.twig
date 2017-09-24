@@ -1,7 +1,10 @@
-{% extends 'base.html.twig' %}
-{% block title %}Modification pays: {{ pays.nom }} {% endblock %}
+{% extends 'RemiBundle::base.html.twig' %}
+
+{% block title %}{{ "country.title"|trans({'%countryName%': pays.nom }) }}{% endblock %}
+
 {% block body %}
+	<h1>{{ "country.title"|trans({'%countryName%': pays.nom }) }}</h1>
 	{{ form_start(form) }}
-		
+		{{ form_widget(form.nom)}}  <img src="{{ asset('uploads/drapeaux/'~pays.drapeau) }}" />
 	{{ form_end(form) }}
 {% endblock %}

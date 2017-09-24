@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="c3e6921702a45fa1df4965d74720fc29" resname="form.error.notblank">
+        <source>form.error.notblank</source>
+        <target>Ce champ ne peut être vide.</target>
+      </trans-unit>
+      <trans-unit id="10e6921702a45fa1df4965d74720fc29" resname="form.error.filepng">
+          <source>form.error.filepng</source>
+          <target>Vous ne pouvez uniquement transférer un fichier avec l'extension .PNG</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

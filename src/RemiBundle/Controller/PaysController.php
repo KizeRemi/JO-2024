@@ -24,7 +24,7 @@ class PaysController extends Controller
     	if($form->isSubmitted() && $form->isValid()){
     		$em->persist($pays);
     		$em->flush();
-    		$this->addFlash('notice', 'Enregistré');
+    		$this->addFlash('notice', $this->get('translator')->trans('notice.country.add'));
     	}
 
         $tousLesPays = $em->getRepository('RemiBundle:Pays')->findAll();
@@ -49,7 +49,7 @@ class PaysController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $em->persist($pays);
             $em->flush();
-            $this->addFlash('notice', 'Enregistré');
+            $this->addFlash('notice', $this->get('translator')->trans('notice.country.update'));
         }
 
         return $this->render('RemiBundle:Pays:show.html.twig', [
@@ -68,6 +68,7 @@ class PaysController extends Controller
 
         $em->remove($pays);
         $em->flush();
+        $this->addFlash('notice', $this->get('translator')->trans('notice.country.delete'));
 
         return $this->redirectToRoute('remi_pays_index');
     }

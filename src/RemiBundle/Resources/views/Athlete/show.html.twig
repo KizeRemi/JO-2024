@@ -1,7 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'RemiBundle::base.html.twig' %}
+
 {% block title %}Modification athlete: {{ athlete.nom }} {% endblock %}
+
 {% block body %}
-    <h1>{{ "athlete.title"|trans({'%athleteLastName%': form.vars.value.nom, '%athleteFirstName%': form.vars.value.prenom}) }}</h1>
+    <h1>{{ "athlete.title"|trans({'%athleteLastName%': athlete.nom, '%athleteFirstName%': athlete.prenom }) }}</h1>
 	{{ form_start(form) }}
 	{{ form_end(form) }}
 {% endblock %}

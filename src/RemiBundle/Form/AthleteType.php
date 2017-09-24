@@ -6,6 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -36,6 +37,10 @@ class AthleteType extends AbstractType
                                         'multiple'     => false,
                                         'choice_label' => 'nom',
                                         'expanded'     => false
+                ))
+                ->add('photo', FileType::class, array(
+                                        'label'      => 'form.label.flag',
+                                        'data_class' => null
                 ))
                 ->add('save', SubmitType::class, array(
                                         'label'        => 'form.label.save'

@@ -5,6 +5,22 @@
             <tool tool-id="symfony" tool-name="Symfony"/>
         </header>
         <body>
+            <trans-unit id="de2616862d565b02c389848f54767a64" resname="menu.athlete">
+                <source>menu.athlete</source>
+                <target>Athlètes</target>
+            </trans-unit>
+            <trans-unit id="de2816862d565b02c389848f54767a64" resname="menu.discipline">
+                <source>menu.discipline</source>
+                <target>Disciplines</target>
+            </trans-unit>
+            <trans-unit id="de3016862d565b02c389848f54767a64" resname="menu.country">
+                <source>menu.country</source>
+                <target>Pays</target>
+            </trans-unit>
+            <trans-unit id="de3116862d565b02c389848f54767a64" resname="country.title">
+                <source>country.title</source>
+                <target>Modification du pays %countryName%</target>
+            </trans-unit>
             <trans-unit id="de2416862d565b02c389848f54767a64" resname="athlete.title">
                 <source>athlete.title</source>
                 <target>Modification de %athleteLastName% %athleteFirstName%</target>
@@ -52,6 +68,50 @@
             <trans-unit id="de2516862d565b02c389848f54767a64" resname="form.label.flag">
                 <source>form.label.flag</source>
                 <target>Drapeau (.png)</target>
+            </trans-unit>
+            <trans-unit id="de2716862d565b02c389848f54767a64" resname="notice.country.add">
+                <source>notice.country.add</source>
+                <target>Le pays a bien été ajouté.</target>
+            </trans-unit>
+            <trans-unit id="de2916862d565b02c389848f54767a64" resname="notice.country.update">
+                <source>notice.country.update</source>
+                <target>Le pays a bien été modifié.</target>
+            </trans-unit>
+            <trans-unit id="de4016862d565b02c389848f54767a64" resname="notice.country.delete">
+                <source>notice.country.delete</source>
+                <target>Le pays a été supprimé.</target>
+            </trans-unit>
+            <trans-unit id="de4416862d565b02c389848f54767a64" resname="notice.athlete.add">
+                <source>notice.athlete.add</source>
+                <target>L'athlète a bien été ajouté.</target>
+            </trans-unit>
+            <trans-unit id="de4516862d565b02c389848f54767a64" resname="notice.athlete.update">
+                <source>notic.athlete.update</source>
+                <target>L'athlète a bien été modifié.</target>
+            </trans-unit>
+            <trans-unit id="de4616862d565b02c389848f54767a64" resname="notice.athlete.delete">
+                <source>notice.athlete.delete</source>
+                <target>L'athlète a bien été supprimé.</target>
+            </trans-unit>
+            <trans-unit id="de5016862d565b02c389848f54767a64" resname="tab.header.lastname">
+                <source>tab.header.lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="de5116862d565b02c389848f54767a64" resname="tab.header.firstname">
+                <source>tab.header.firstname</source>
+                <target>Prenom</target>
+            </trans-unit>
+            <trans-unit id="de5216862d565b02c389848f54767a64" resname="tab.header.birthdate">
+                <source>tab.header.birthdate</source>
+                <target>Date de naissance</target>
+            </trans-unit>
+            <trans-unit id="de5516862d565b02c389848f54767a64" resname="tab.header.country">
+                <source>tab.header.country</source>
+                <target>Pays</target>
+            </trans-unit>
+            <trans-unit id="de5616862d565b02c389848f54767a64" resname="tab.header.discipline">
+                <source>tab.header.discipline</source>
+                <target>Discipline</target>
             </trans-unit>
         </body>
     </file>

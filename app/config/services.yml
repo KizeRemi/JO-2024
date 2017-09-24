@@ -33,13 +33,29 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
-    remi.file_uploader:
+    remi.file_uploader.drapeaux:
         class: RemiBundle\Services\FileUploader
         arguments:
             $targetDir: '%drapeaux_directory%'
         public: true
 
+    remi.file_uploader.photos:
+        class: RemiBundle\Services\FileUploader
+        arguments:
+            $targetDir: '%photos_directory%'
+        public: true
+
     RemiBundle\Listener\DrapeauUploaderListener:
+        arguments:
+            $uploader: '@remi.file_uploader.drapeaux'
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postRemove }
+
+    RemiBundle\Listener\PhotoUploaderListener:
+        arguments:
+            $uploader: '@remi.file_uploader.photos'
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }

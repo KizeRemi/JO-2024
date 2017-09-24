@@ -24,7 +24,7 @@ class DisciplineController extends Controller
     	if($form->isSubmitted() && $form->isValid()){
     		$em->persist($discipline);
     		$em->flush();
-    		$this->addFlash('notice', 'Enregistré');
+    		$this->addFlash('notice', 'La discipline a bien été ajouté.');
     	}
 
         $disciplines = $em->getRepository('RemiBundle:Discipline')->findAll();
@@ -49,7 +49,7 @@ class DisciplineController extends Controller
     	if($form->isSubmitted() && $form->isValid()){
     		$em->persist($discipline);
     		$em->flush();
-    		$this->addFlash('notice', 'Enregistré');
+    		$this->addFlash('notice', 'La discipline a bien été modifié.');
     	}
 
         return $this->render('RemiBundle:Discipline:show.html.twig', [
@@ -68,6 +68,7 @@ class DisciplineController extends Controller
 
         $em->remove($discipline);
         $em->flush();
+        $this->addFlash('notice', 'La discipline a bien été ajouté.');
 
         return $this->redirectToRoute('remi_discipline_index');
     }

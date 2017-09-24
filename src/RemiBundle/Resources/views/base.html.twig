@@ -8,6 +8,22 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <div id="header">
+            <div id="menu">
+                <ul>
+                    <li>
+                        <a href="{{ path('remi_athlete_index') }}">{{ 'menu.athlete'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('remi_pays_index') }}">{{ 'menu.country'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('remi_discipline_index') }}">{{ 'menu.discipline'|trans }}</a>
+                    </li>
+                </ul>
+                <br class="clearfix" />
+            </div>
+        </div>
         {% for message in app.flashes('notice') %}
             <div class="flash-notice">
                 {{ message }}
