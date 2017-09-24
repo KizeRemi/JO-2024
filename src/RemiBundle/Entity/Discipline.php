@@ -16,7 +16,7 @@ class Discipline {
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(name="nom", type="string", length=60, nullable=false)

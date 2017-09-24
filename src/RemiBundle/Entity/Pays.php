@@ -16,7 +16,7 @@ class Pays {
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(name="nom", type="string", length=45, nullable=false)
