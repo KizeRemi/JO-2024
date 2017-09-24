@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <th>Nom</th>
+                <th>Candidats</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -13,6 +14,7 @@
         {% for discipline in disciplines %}
             <tr>
                 <td>{{ discipline.nom }}</td>
+                <td>{{ discipline.getAthletes()|length }}</td>
                 <td>
                     <a href="{{ path('remi_discipline_delete', { 'id' : discipline.id } )}}">
                         <button>Supprimer</button>
