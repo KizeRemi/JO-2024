@@ -5,9 +5,53 @@
             <tool tool-id="symfony" tool-name="Symfony"/>
         </header>
         <body>
-            <trans-unit id="de8416862d565b02c389848f54767a64" resname="athletes.list">
+            <trans-unit id="de2516862d565b02c389848f54767a64" resname="athlete.title">
+                <source>athlete.title</source>
+                <target>Update of %athleteLastName% %athleteFirstName%</target>
+            </trans-unit>
+            <trans-unit id="de1416862d565b02c389848f54767a64" resname="athletes.list">
                 <source>athletes.list</source>
                 <target>List of athletes</target>
+            </trans-unit>
+            <trans-unit id="de4416862d565b02c389848f54767a64" resname="countries.list">
+                <source>countries.list</source>
+                <target>List of countries</target>
+            </trans-unit>
+            <trans-unit id="de6416862d565b02c389848f54767a64" resname="disciplines.list">
+                <source>disciplines.list</source>
+                <target>List of disciplines</target>
+            </trans-unit>
+            <trans-unit id="de7416862d565b02c389848f54767a64" resname="form.label.lastname">
+                <source>form.label.lastname</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="de1116862d565b02c389848f54767a64" resname="form.label.firstname">
+                <source>form.label.firstname</source>
+                <target>Firstname</target>
+            </trans-unit>
+            <trans-unit id="de1216862d565b02c389848f54767a64" resname="form.label.birthdate">
+                <source>form.label.birthdate</source>
+                <target>Birthdate</target>
+            </trans-unit>
+            <trans-unit id="de1616862d565b02c389848f54767a64" resname="form.label.country">
+                <source>form.label.country</source>
+                <target>Country</target>
+            </trans-unit>
+            <trans-unit id="de1716862d565b02c389848f54767a64" resname="form.label.discipline">
+                <source>form.label.discipline</source>
+                <target>Discipline</target>
+            </trans-unit>
+            <trans-unit id="de1916862d565b02c389848f54767a64" resname="form.label.save">
+                <source>form.label.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="de2216862d565b02c389848f54767a64" resname="form.label.name">
+                <source>form.label.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="de2416862d565b02c389848f54767a64" resname="form.label.flag">
+                <source>form.label.flag</source>
+                <target>Flag (.png)</target>
             </trans-unit>
         </body>
     </file>

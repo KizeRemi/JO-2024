@@ -14,26 +14,32 @@ class AthleteType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder ->add('nom', TextType::class, array(
-                                        'label' => 'Nom'
-                    ))
-                 ->add('prenom', TextType::class, array(
-                                        'label' => 'Prenom'
-                    ))
-                 ->add('dateNaissance', DateType::class, array(
-                                        'label' => 'Date de Naissance'
-                    ))
-                 ->add('pays', EntityType::class, array(
-                                        'class' => 'RemiBundle:Pays',
-                                        'multiple' => false,
+        $builder->add('nom', TextType::class, array(
+                                        'label' => 'form.label.lastname'
+                ))
+                ->add('prenom', TextType::class, array(
+                                        'label' => 'form.label.firstname'
+                ))
+                ->add('dateNaissance', DateType::class, array(
+                                        'label' => 'form.label.birthdate'
+                ))
+                ->add('pays', EntityType::class, array(
+                                        'label'        => 'form.label.country',
+                                        'class'        => 'RemiBundle:Pays',
+                                        'multiple'     => false,
                                         'choice_label' => 'nom',
-                                        'expanded' => false))
-                 ->add('discipline', EntityType::class, array(
-                                        'class' => 'RemiBundle:Discipline',
-                                        'multiple' => false,
+                                        'expanded'     => false
+                ))
+                ->add('discipline', EntityType::class, array(
+                                        'label'        => 'form.label.discipline',
+                                        'class'        => 'RemiBundle:Discipline',
+                                        'multiple'     => false,
                                         'choice_label' => 'nom',
-                                        'expanded' => false))
-                 ->add('save', SubmitType::class);
+                                        'expanded'     => false
+                ))
+                ->add('save', SubmitType::class, array(
+                                        'label'        => 'form.label.save'
+                ));
     }
 
     public function getName()

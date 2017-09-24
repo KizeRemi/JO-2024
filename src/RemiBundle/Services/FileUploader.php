@@ -26,8 +26,10 @@ class FileUploader
         return $this->targetDir;
     }
 
-    public function remove(UploadedFile $file)
-    {
-        unlink ($file);
+    public function remove($pathFile)
+    {  
+        if($pathFile){
+            unlink($this->targetDir.'/'.$pathFile);
+        }
     }
 }

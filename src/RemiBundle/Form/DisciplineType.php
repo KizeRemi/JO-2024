@@ -12,10 +12,12 @@ class DisciplineType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder ->add('nom', TextType::class, array(
-                                        'label' => 'Nom'
-                    ))
-                 ->add('save', SubmitType::class);
+        $builder->add('nom', TextType::class, array(
+                                        'label' => 'form.label.name'
+                ))
+                ->add('save', SubmitType::class, array(
+                                        'label'        => 'form.label.save'
+                ));
     }
 
     public function getName()

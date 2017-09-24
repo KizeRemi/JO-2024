@@ -1,32 +1,32 @@
 {% extends 'base.html.twig' %}
 {% block title %}Liste des Pays{% endblock %}
 {% block body %}
-    <h1>Liste des Pays</h1>
+    <h1>{{ 'countries.list'|trans }}</h1>
     <table border=1>
-    	<thead>
-    		<tr>
-    			<th>Nom</th>
-    			<th>Actions</th>
-    		</tr>
-    	</thead>
-    	<tbody>
-		{% for pays in tousLesPays %}
-			<tr>
-				<td>{{ pays.nom }}</td>
-				<td>
-					<a href="{{ path('remi_pays_delete', { 'id' : pays.id } )}}">
-						<button>Supprimer</button>
-					</a>
-					<a href="{{ path('remi_pays_show', { 'id' : pays.id } )}}">
-						<button>Modifier</button>
-					</a>
-				</td>
-			</tr>
-		{% endfor %}    		
-    	</tbody>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pays in tousLesPays %}
+            <tr>
+                <td>{{ pays.nom }}</td>
+                <td>
+                    <a href="{{ path('remi_pays_delete', { 'id' : pays.id } )}}">
+                        <button>Supprimer</button>
+                    </a>
+                    <a href="{{ path('remi_pays_show', { 'id' : pays.id } )}}">
+                        <button>Modifier</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
     </table><br>
     <div>
-	{{ form_start(form) }}
-	{{ form_end(form) }}
-	</div>
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+    </div>
 {% endblock %}

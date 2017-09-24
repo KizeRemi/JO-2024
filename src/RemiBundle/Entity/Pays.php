@@ -31,6 +31,9 @@ class Pays {
      */
     private $drapeau;
 
+    public $temp;
+    public $path;
+
     public function getDrapeau()
     {
         return $this->drapeau;

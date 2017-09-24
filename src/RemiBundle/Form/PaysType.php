@@ -15,13 +15,15 @@ class PaysType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nom', TextType::class, array(
-                                        'label' => 'Nom'
-                    ))
-                ->add('drapeau', FileType::class, array(
-                    'label'      => 'Drapeau (.png)',
-                    'data_class' => null
+                                        'label' => 'form.label.name'
                 ))
-                ->add('save', SubmitType::class);
+                ->add('drapeau', FileType::class, array(
+                                        'label'      => 'form.label.flag',
+                                        'data_class' => null
+                ))
+                ->add('save', SubmitType::class, array(
+                                        'label'        => 'form.label.save'
+                ));
     }
 
     public function getName()

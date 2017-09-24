@@ -28,7 +28,11 @@ class DrapeauUploaderListener
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
+        $oldPathFile = $args->getOldValue('drapeau');
 
+        if($oldPathFile){
+            $this->uploader->remove($oldPathFile);
+        }
         $this->uploadFile($entity);
     }
 
@@ -39,11 +43,20 @@ class DrapeauUploaderListener
         }
 
         $file = $entity->getDrapeau();
-
         if ($file instanceof UploadedFile) {
             $fileName = $this->uploader->upload($file);
         }
 
         $entity->setDrapeau($fileName);
+    }
+
+    public function postRemove(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+
+
+        if ($entity instanceof Pays) {
+            $this->uploader->remove($entity->getDrapeau());
+        }
     }
 }
