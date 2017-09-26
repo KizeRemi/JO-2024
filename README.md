@@ -24,11 +24,9 @@ Ouvrez le terminal de votre ordinateur, allez dans le dossier d'installation du 
 
 ```
 git clone https://github.com/KizeRemi/JO-2024.git
-
 ```
 
 Puis
 ```
 composer install
-
 ```
