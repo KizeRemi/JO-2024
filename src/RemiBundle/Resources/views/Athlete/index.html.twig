@@ -11,7 +11,7 @@
     			<th>{{ 'tab.header.birthdate'|trans }}</th>
     			<th>{{ 'tab.header.discipline'|trans }}</th>
     			<th>{{ 'tab.header.country'|trans }}</th>
-    			<th>Actions</th>
+    			<th>{{ 'tab.header.action'|trans }}</th>
     		</tr>
     	</thead>
     	<tbody>
@@ -24,10 +24,10 @@
 				<td>{{ athlete.pays.nom}} <img src="{{ asset('uploads/drapeaux/'~athlete.pays.drapeau) }}" /> </td>
 				<td>
 					<a href="{{ path('remi_athlete_delete', { 'id' : athlete.id } )}}">
-						<button>Supprimer</button>
+						<button>{{ 'form.button.delete'|trans }}</button>
 					</a>
 					<a href="{{ path('remi_athlete_show', { 'id' : athlete.id } )}}">
-						<button>Modifier</button>
+						<button>{{ 'form.button.update'|trans }}</button>
 					</a>
 				</td>
 			</tr>

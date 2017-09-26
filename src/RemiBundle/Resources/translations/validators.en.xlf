@@ -5,13 +5,21 @@
             <tool tool-id="symfony" tool-name="Symfony"/>
         </header>
         <body>
-            <trans-unit id="c3e6921702a45fa1df4965d74720fc29" resname="form.error.notblank">
+            <trans-unit id="c3e6921702a45fa1df4965d74720fc21" resname="form.error.notblank">
                 <source>form.error.notblank</source>
                 <target>This value could not be blank.</target>
             </trans-unit>
-            <trans-unit id="10e6921702a45fa1df4965d74720fc29" resname="form.error.filepng">
+            <trans-unit id="10e6921702a45fa1df4965d74720fc21" resname="form.error.filepng">
                 <source>form.error.filepng</source>
                 <target>You should only upload a file with the extension .PNG</target>
+            </trans-unit>
+            <trans-unit id="12e6921702a45fa1df4965d74720fc21" resname="form.error.filepngjpeg">
+                <source>form.error.filepngjpeg</source>
+                <target>You should only upload a file with the extension .PNG or .JPEG</target>
+            </trans-unit>
+            <trans-unit id="13e6921702a45fa1df4965d74720fc21" resname="form.error.sizephoto">
+                <source>form.error.sizephoto</source>
+                <target>The maximum size allowed is 4096k.</target>
             </trans-unit>
         </body>
     </file>

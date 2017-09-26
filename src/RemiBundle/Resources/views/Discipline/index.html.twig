@@ -5,22 +5,22 @@
     <table border=1>
         <thead>
             <tr>
-                <th>Nom</th>
-                <th>Candidats</th>
-                <th>Actions</th>
+                <th>{{ 'tab.header.name'|trans }}</th>
+                <th>{{ 'tab.header.candidate'|trans }}</th>
+                <th>{{ 'tab.header.action'|trans }}</th>
             </tr>
         </thead>
         <tbody>
         {% for discipline in disciplines %}
             <tr>
                 <td>{{ discipline.nom }}</td>
-                <td>{{ discipline.getAthletes()|length }}</td>
+                <td>{{ discipline.athletes|length }}</td>
                 <td>
                     <a href="{{ path('remi_discipline_delete', { 'id' : discipline.id } )}}">
-                        <button>Supprimer</button>
+                        <button>{{ 'form.button.delete'|trans }}</button>
                     </a>
                     <a href="{{ path('remi_discipline_show', { 'id' : discipline.id } )}}">
-                        <button>Modifier</button>
+                        <button>{{ 'form.button.update'|trans }}</button>
                     </a>
                 </td>
             </tr>

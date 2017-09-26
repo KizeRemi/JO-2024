@@ -11,7 +11,6 @@ use RemiBundle\Services\FileUploader;
 class DrapeauUploaderListener
 {
     private $uploader;
-    private $fileName;
 
     public function __construct(FileUploader $uploader)
     {
@@ -21,7 +20,6 @@ class DrapeauUploaderListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-
         $this->uploadFile($entity);
     }
 
@@ -33,7 +31,6 @@ class DrapeauUploaderListener
         }
         
         $oldPathFile = $args->getOldValue('drapeau');
-
         if($oldPathFile){
             $this->uploader->remove($oldPathFile);
         }
@@ -58,7 +55,6 @@ class DrapeauUploaderListener
     public function postRemove(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-
         if ($entity instanceof Pays) {
             $this->uploader->remove($entity->getDrapeau());
         }

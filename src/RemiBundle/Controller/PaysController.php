@@ -4,12 +4,12 @@ namespace RemiBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use RemiBundle\Entity\Pays;
 use RemiBundle\Form\PaysType;
 
 class PaysController extends Controller
 {
+
     /**
      * @Route("/pays", name="remi_pays_index")
      */

@@ -69,6 +69,10 @@
                 <source>form.label.flag</source>
                 <target>Drapeau (.png)</target>
             </trans-unit>
+            <trans-unit id="de6416862d565b02c389848f54767a64" resname="form.label.picture">
+                <source>form.label.picture</source>
+                <target>Photo (.png/.jpeg)</target>
+            </trans-unit>
             <trans-unit id="de2716862d565b02c389848f54767a64" resname="notice.country.add">
                 <source>notice.country.add</source>
                 <target>Le pays a bien été ajouté.</target>
@@ -93,6 +97,18 @@
                 <source>notice.athlete.delete</source>
                 <target>L'athlète a bien été supprimé.</target>
             </trans-unit>
+            <trans-unit id="de6016862d565b02c389848f54767a64" resname="notice.discipline.add">
+                <source>notice.discipline.add</source>
+                <target>La discipline a été ajoutée.</target>
+            </trans-unit>
+            <trans-unit id="de6116862d565b02c389848f54767a64" resname="notice.discipline.update">
+                <source>notice.discipline.update</source>
+                <target>La discipline a été modifiée.</target>
+            </trans-unit>
+            <trans-unit id="de6216862d565b02c389848f54767a64" resname="notice.discipline.delete">
+                <source>notice.discipline.delete</source>
+                <target>La discipline a été supprimée.</target>
+            </trans-unit>
             <trans-unit id="de5016862d565b02c389848f54767a64" resname="tab.header.lastname">
                 <source>tab.header.lastname</source>
                 <target>Nom</target>
@@ -112,6 +128,30 @@
             <trans-unit id="de5616862d565b02c389848f54767a64" resname="tab.header.discipline">
                 <source>tab.header.discipline</source>
                 <target>Discipline</target>
+            </trans-unit>
+            <trans-unit id="de7316862d565b02c389848f54767a64" resname="tab.header.name">
+                <source>tab.header.name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="de7416862d565b02c389848f54767a64" resname="tab.header.flag">
+                <source>tab.header.flag</source>
+                <target>Drapeau</target>
+            </trans-unit>
+            <trans-unit id="de7516862d565b02c389848f54767a64" resname="tab.header.action">
+                <source>tab.header.action</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="de7716862d565b02c389848f54767a64" resname="tab.header.candidates">
+                <source>tab.header.candidates</source>
+                <target>Candidats</target>
+            </trans-unit>
+            <trans-unit id="de7816862d565b02c389848f54767a64" resname="form.button.delete">
+                <source>form.button.delete</source>
+                <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="de7916862d565b02c389848f54767a64" resname="form.button.update">
+                <source>form.button.update</source>
+                <target>Modifier</target>
             </trans-unit>
         </body>
     </file>

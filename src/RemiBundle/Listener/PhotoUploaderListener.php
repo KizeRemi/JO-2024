@@ -20,23 +20,21 @@ class PhotoUploaderListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-
         $this->uploadFile($entity);
     }
 
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
-
         if (!$entity instanceof Athlete) {
             return;
         }
 
         $oldPathFile = $args->getOldValue('photo');
-
         if($oldPathFile){
             $this->uploader->remove($oldPathFile);
         }
+
         $this->uploadFile($entity);
     }
 
@@ -57,7 +55,6 @@ class PhotoUploaderListener
     public function postRemove(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-
         if ($entity instanceof Athlete) {
             $this->uploader->remove($entity->getPhoto());
         }

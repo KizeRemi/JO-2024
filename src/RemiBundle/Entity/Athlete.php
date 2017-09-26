@@ -69,7 +69,8 @@ class Athlete {
      * @Assert\File(
      *     maxSize = "4096k",
      *     mimeTypes = {"image/png", "image/jpeg"},
-     *     mimeTypesMessage = "form.error.filepng"
+     *     mimeTypesMessage = "form.error.filepngjpeg",
+     *     maxSizeMessage = "form.error.sizephoto"
      * )
      */
     private $photo;

@@ -1,4 +1,5 @@
 <?php
+
 namespace RemiBundle\Services;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -26,10 +27,11 @@ class FileUploader
         return $this->targetDir;
     }
 
-    public function remove($pathFile)
+    public function remove($fileName)
     {  
-        if($pathFile){
-            unlink($this->targetDir.'/'.$pathFile);
+        $file = $this->targetDir.'/'.$fileName;
+        if(file_exists($file)){
+            unlink($file);
         }
     }
 }

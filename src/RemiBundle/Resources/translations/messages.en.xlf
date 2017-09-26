@@ -69,6 +69,10 @@
                 <source>form.label.flag</source>
                 <target>Flag (.png)</target>
             </trans-unit>
+            <trans-unit id="de6316862d565b02c389848f54767a64" resname="form.label.picture">
+                <source>form.label.picture</source>
+                <target>Picture (.png/.jpeg)</target>
+            </trans-unit>
             <trans-unit id="de2616862d565b02c389848f54767a64" resname="notice.country.add">
                 <source>notice.country.add</source>
                 <target>The country has been added.</target>
@@ -93,6 +97,18 @@
                 <source>notice.athlete.delete</source>
                 <target>The athlete has been deleted.</target>
             </trans-unit>
+            <trans-unit id="de5716862d565b02c389848f54767a64" resname="notice.discipline.add">
+                <source>notice.discipline.add</source>
+                <target>The discipline has been added.</target>
+            </trans-unit>
+            <trans-unit id="de5816862d565b02c389848f54767a64" resname="notice.discipline.update">
+                <source>notice.discipline.update</source>
+                <target>The discipline has been updated.</target>
+            </trans-unit>
+            <trans-unit id="de5916862d565b02c389848f54767a64" resname="notice.discipline.delete">
+                <source>notice.discipline.delete</source>
+                <target>The discipline has been deleted</target>
+            </trans-unit>
             <trans-unit id="de4716862d565b02c389848f54767a64" resname="tab.header.lastname">
                 <source>tab.header.lastname</source>
                 <target>Lastname</target>
@@ -112,6 +128,30 @@
             <trans-unit id="de5416862d565b02c389848f54767a64" resname="tab.header.discipline">
                 <source>tab.header.discipline</source>
                 <target>Discipline</target>
+            </trans-unit>
+            <trans-unit id="de7016862d565b02c389848f54767a64" resname="tab.header.name">
+                <source>tab.header.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="de7116862d565b02c389848f54767a64" resname="tab.header.flag">
+                <source>tab.header.flag</source>
+                <target>Flag</target>
+            </trans-unit>
+            <trans-unit id="de7216862d565b02c389848f54767a64" resname="tab.header.action">
+                <source>tab.header.action</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="de7616862d565b02c389848f54767a64" resname="tab.header.candidate">
+                <source>tab.header.candidate</source>
+                <target>Candidates</target>
+            </trans-unit>
+            <trans-unit id="de8016862d565b02c389848f54767a64" resname="form.button.delete">
+                <source>form.button.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="de8116862d565b02c389848f54767a64" resname="form.button.update">
+                <source>form.button.update</source>
+                <target>Update</target>
             </trans-unit>
         </body>
     </file>

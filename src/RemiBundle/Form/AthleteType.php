@@ -39,7 +39,7 @@ class AthleteType extends AbstractType
                                         'expanded'     => false
                 ))
                 ->add('photo', FileType::class, array(
-                                        'label'      => 'form.label.flag',
+                                        'label'      => 'form.label.picture',
                                         'data_class' => null
                 ))
                 ->add('save', SubmitType::class, array(
