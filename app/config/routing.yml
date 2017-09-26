@@ -2,7 +2,3 @@ remi:
     resource: "@RemiBundle/Controller/"
     type:     annotation
     prefix:   /{_locale}/remi
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation

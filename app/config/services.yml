@@ -16,16 +16,16 @@ services:
 
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    AppBundle\:
-        resource: '../../src/AppBundle/*'
+    RemiBundle\:
+        resource: '../../src/RemiBundle/*'
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
-        exclude: '../../src/AppBundle/{Entity,Repository,Tests}'
+        exclude: '../../src/RemiBundle/{Entity,Repository,Tests}'
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-    AppBundle\Controller\:
-        resource: '../../src/AppBundle/Controller'
+    RemiBundle\Controller\:
+        resource: '../../src/RemiBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
 
