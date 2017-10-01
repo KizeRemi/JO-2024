@@ -141,7 +141,7 @@
                 <source>tab.header.action</source>
                 <target>Actions</target>
             </trans-unit>
-            <trans-unit id="de7616862d565b02c389848f54767a64" resname="tab.header.candidate">
+            <trans-unit id="de7616862d565b02c389848f54767a64" resname="tab.header.candidates">
                 <source>tab.header.candidate</source>
                 <target>Candidates</target>
             </trans-unit>
