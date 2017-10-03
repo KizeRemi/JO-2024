@@ -30,3 +30,8 @@ Puis
 ```
 composer install
 ```
+
+Vous pouvez installer des données de base 
+```
+php bin/console doctrine:fixtures:load
+```
