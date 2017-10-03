@@ -153,6 +153,18 @@
                 <source>form.button.update</source>
                 <target>Modifier</target>
             </trans-unit>
+            <trans-unit id="de9516862d565b02c389848f54767a64" resname="tab.header.picture">
+                <source>tab.header.picture</source>
+                <target>Photo</target>
+            </trans-unit>
+            <trans-unit id="de9016862d565b02c389848f54767a64" resname="form.placeholder.country">
+                <source>form.placeholder.country</source>
+                <target>Choisir un pays...</target>
+            </trans-unit>
+            <trans-unit id="de9116862d565b02c389848f54767a64" resname="form.placeholder.discipline">
+                <source>form.placeholder.discipline</source>
+                <target>Choisir une discipline...</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

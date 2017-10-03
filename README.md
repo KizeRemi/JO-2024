@@ -33,5 +33,6 @@ composer install
 
 Vous pouvez installer des données de base 
 ```
+php bin/console doctrine:schema:update --force
 php bin/console doctrine:fixtures:load
 ```

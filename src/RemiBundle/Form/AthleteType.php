@@ -22,21 +22,24 @@ class AthleteType extends AbstractType
                                         'label' => 'form.label.firstname'
                 ))
                 ->add('dateNaissance', DateType::class, array(
-                                        'label' => 'form.label.birthdate'
+                                        'label' => 'form.label.birthdate',
+                                        'years' => range(1950,2017)
                 ))
                 ->add('pays', EntityType::class, array(
                                         'label'        => 'form.label.country',
                                         'class'        => 'RemiBundle:Pays',
                                         'multiple'     => false,
                                         'choice_label' => 'nom',
-                                        'expanded'     => false
+                                        'expanded'     => false,
+                                        'placeholder'  => "form.placeholder.country"
                 ))
                 ->add('discipline', EntityType::class, array(
                                         'label'        => 'form.label.discipline',
                                         'class'        => 'RemiBundle:Discipline',
                                         'multiple'     => false,
                                         'choice_label' => 'nom',
-                                        'expanded'     => false
+                                        'expanded'     => false,
+                                        'placeholder'  => "form.placeholder.discipline"
                 ))
                 ->add('photo', FileType::class, array(
                                         'label'      => 'form.label.picture',

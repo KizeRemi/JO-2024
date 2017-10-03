@@ -3,9 +3,10 @@
 
 {% block body %}
     <h1>{{ 'athletes.list'|trans }}</h1>
-    <table border=1>
+    <table class="table table-bordered">
     	<thead>
     		<tr>
+    			<th>{{ 'tab.header.picture'|trans }}</th>
     			<th>{{ 'tab.header.lastname'|trans }}</th>
     			<th>{{ 'tab.header.firstname'|trans }}</th>
     			<th>{{ 'tab.header.birthdate'|trans }}</th>
@@ -17,11 +18,14 @@
     	<tbody>
 		{% for athlete in athletes %}
 			<tr>
+				<td>
+					<img src="{{ asset('uploads/photos/' ~ athlete.photo|default("")) }}" alt="drapeau" class="athlete-photo" style="max-width: 100px;" />
+				</td>
 				<td>{{ athlete.nom }}</td>
 				<td>{{ athlete.prenom }}</td>
 				<th>{{ athlete.dateNaissance|date("d/m/Y") }}</th>
 				<td>{{ athlete.discipline.nom|default("Aucune discipline") }}</td>
-				<td>{{ athlete.pays.nom|default("Aucun pays") }} <img src="{{ asset('uploads/drapeaux/'~athlete.pays.drapeau|default("")) }}" alt="drapeau" /> </td>
+				<td>{{ athlete.pays.nom|default("Aucun pays") }} <img src="{{ asset('uploads/drapeaux/' ~ athlete.pays.drapeau|default("")) }}" alt="drapeau" /> </td>
 				<td>
 					<a href="{{ path('remi_athlete_delete', { 'id' : athlete.id } )}}">
 						<button>{{ 'form.button.delete'|trans }}</button>
