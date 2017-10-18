@@ -50,7 +50,6 @@ class VilleController extends Controller
             $em->flush();
             
             // Le serializer transforme l'objet Ville en json, oklm
-            // On pourrait créer un , on peut faire un return $ville direct
             $jsonContent = $serializer->serialize($ville, 'json');  
             $response = new Response($jsonContent, 200);
             return $response;
