@@ -45,17 +45,20 @@
     </div>
 </div>
 <script>
+    var locale = "{{ app.request.locale }}";
     $('.save-form').click(function (e) {
         $.ajax({
-            url: '{{ path("remi_ville_add") }}',
+            url: Routing.generate('remi_ville_add', { id: null, '_locale': locale }),
             type: 'POST',
             dataType: "json",
             data: $('form').serialize(),
             success: function (result) {
+                console.log(result);
                 $(".tbody-ville").append("<tr>"+
                                             "<td>"+result.nom+"</td>"+
                                             "<td>"+
-                                                "<button data-id="+result.id+">Modifier</button>"+
+                                                "<button class='update-form' data-id="+result.id+">Modifier</button>"+
+                                                "<button class='remove-town' data-id="+result.id+">Supprimer</button>"+
                                             "</td>"+
                                             "</tr>" );
                 $('#myModal').modal('hide');
@@ -80,9 +83,8 @@
 
     $('body').on('click', '.update-form', function(e) {
         let id = e.target.dataset.id;
-        // fonctionne pas à cause de l'id car jquery ça pue
         $.ajax({
-            url: "{{ path('remi_ville_form', {'id': "id" }) }}",
+            url: Routing.generate('remi_ville_update', { id: id, '_locale': locale }),
             type: 'POST',
             success: function (result) {
                 $(".modal-body").html(result);
@@ -90,13 +92,15 @@
         });
     });
 
-    $('body').on('click', '.remove-town', function(e) {
-        let id = e.target.dataset.id;
+    $('body').on('click', '.remove-town', function(event) {
+        let id = event.target.dataset.id;
         $.ajax({
-            url: "{{ path('remi_ville_form', {'id': "id" }) }}",
+            url: Routing.generate('remi_ville_delete', { id: id, '_locale': locale }),
             type: 'DELETE',
             success: function (result) {
                 $(".modal-body").html(result);
+                let tr = $(event.target).parent().parent().remove();
+                $(".success-message").html("{{ 'notice.town.delete'|trans }}");
             }
         });
     });

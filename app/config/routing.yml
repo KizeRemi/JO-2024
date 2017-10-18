@@ -2,3 +2,7 @@ remi:
     resource: "@RemiBundle/Controller/"
     type:     annotation
     prefix:   /{_locale}/remi
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+    prefix:   /{_locale}/

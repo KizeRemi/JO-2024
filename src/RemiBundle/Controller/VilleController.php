@@ -8,9 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use RemiBundle\Entity\Ville;
 use RemiBundle\Form\VilleType;
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class VilleController extends Controller
@@ -35,7 +32,7 @@ class VilleController extends Controller
     }
 
     /**
-     * @Route("/villes/add", name="remi_ville_add")
+     * @Route("/villes/add", name="remi_ville_add", options = { "expose" = true })
      */
     public function addAction(Request $request, SerializerInterface $serializer)
     {
@@ -54,16 +51,12 @@ class VilleController extends Controller
             $response = new Response($jsonContent, 200);
             return $response;
         } 
-
-        // On retourne le message. A chaque fois, on prend que la 1ere erreur.
-        // L'erreur 400 est obligatoire pour passer dans le error coté ajax. 
-        // Le prof a dit que le call ajax passe dans le error si celui-ci a planté mais en réalité, cela dépend du
-        // statut code qu'il reçoit.
+    
         return new JsonResponse($form->getErrors(true)[0]->getMessage(), 400);
     }
 
     /**
-     * @Route("/villes/form/{id}", name="remi_ville_form")
+     * @Route("/villes/form/{id}", name="remi_ville_form", options = { "expose" = true })
      */
     public function getFormAction(Request $request, $id = null)
     {
@@ -79,7 +72,7 @@ class VilleController extends Controller
     }
 
     /**
-     * @Route("/villes/update/{id}", name="remi_ville_update")
+     * @Route("/villes/update/{id}", name="remi_ville_update", options = { "expose" = true })
      */
     public function updateAction(Request $request, $id)
     {
@@ -87,7 +80,7 @@ class VilleController extends Controller
     }
 
     /**
-     * @Route("/villes/remove/{id}", name="remi_ville_remove")
+     * @Route("/villes/remove/{id}", name="remi_ville_delete", options = { "expose" = true })
      */
     public function removeAction(Request $request, $id)
     {
