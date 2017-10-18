@@ -19,8 +19,8 @@ class VilleController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $ville = new Ville();
 
+        $ville = new Ville();
         $villes = $em->getRepository('RemiBundle:Ville')->findAll();
 
         $form = $this->createForm(VilleType::class, $ville);
@@ -61,6 +61,8 @@ class VilleController extends Controller
     public function getFormAction(Request $request, $id = null)
     {
         $em = $this->getDoctrine()->getManager();
+
+        //dégueu
         if ($id) {
             $ville = $em->getRepository('RemiBundle:Ville')->find($id);
         } else {
@@ -74,9 +76,23 @@ class VilleController extends Controller
     /**
      * @Route("/villes/update/{id}", name="remi_ville_update", options = { "expose" = true })
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, SerializerInterface $serializer, $id)
     {
-        // TODO
+        $em = $this->getDoctrine()->getManager();
+        $ville = $em->getRepository('RemiBundle:Ville')->find($id);
+        $form = $this->createForm(VilleType::class, $ville);
+        $form->handleRequest($request);        
+
+        if($form->isValid()){
+            $em->persist($ville);
+            $em->flush();
+
+            $jsonContent = $serializer->serialize($ville, 'json');  
+            $response = new Response($jsonContent, 200);
+            return $response;
+        } 
+    
+        return new JsonResponse($form->getErrors(true)[0]->getMessage(), 400);
     }
 
     /**

@@ -19,7 +19,7 @@
         {% for ville in villes %}
             <tr>
                 <td>{{ ville.nom }}</td>
-                <td><button class="update-form" data-id="{{ ville.id }}">Modifier</button><button class="remove-town" data-id="{{ ville.id }}">Supprimer</button></td>
+                <td><button class="call-form" data-id="{{ ville.id }}" data-toggle="modal" data-target="#myModal">Modifier</button><button class="remove-town" data-id="{{ ville.id }}">Supprimer</button></td>
             </tr>
         {% endfor %}
         </tbody>
@@ -39,28 +39,34 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="save-form btn btn-primary">Enregistrer</button>
+                <button type="button" class="save-new submit-form btn btn-primary">Enregistrer</button>
             </div>
         </div>
     </div>
 </div>
 <script>
-    var locale = "{{ app.request.locale }}";
-    $('.save-form').click(function (e) {
+    let locale = "{{ app.request.locale }}";
+    let $currentTown;
+    let $currentLine;
+    function buildTr(ville) {
+        return  "<tr>"+
+                    "<td>"+ville.nom+"</td>"+
+                    "<td>"+
+                        "<button class='call-form' data-id="+ville.id+" data-toggle='modal' data-target='#myModal'>Modifier</button>"+
+                        "<button class='remove-town' data-id="+ville.id+">Supprimer</button>"+
+                    "</td>"+
+                "</tr>" ;
+    }
+
+    $('body').on('click', '.save-new', function(e) {
+        console.log('new');
         $.ajax({
             url: Routing.generate('remi_ville_add', { id: null, '_locale': locale }),
             type: 'POST',
             dataType: "json",
             data: $('form').serialize(),
             success: function (result) {
-                console.log(result);
-                $(".tbody-ville").append("<tr>"+
-                                            "<td>"+result.nom+"</td>"+
-                                            "<td>"+
-                                                "<button class='update-form' data-id="+result.id+">Modifier</button>"+
-                                                "<button class='remove-town' data-id="+result.id+">Supprimer</button>"+
-                                            "</td>"+
-                                            "</tr>" );
+                $(".tbody-ville").append(buildTr(result));
                 $('#myModal').modal('hide');
                 $(".success-message").html("{{ 'notice.town.add'|trans }}");
             },
@@ -70,10 +76,21 @@
         });
     });
 
-    $('.call-form').click(function (e) {
+    $('body').on('click', '.call-form', function(event) {
+        $currentTown = $(event.target).data('id');
+        console.log($currentTown);
+        $currentLine = $(event.target).parent().parent();
+        if ($currentTown) {
+            $('.submit-form').addClass('save-update');
+            $('.submit-form').removeClass('save-new');
+        } else {
+            $('.submit-form').addClass('save-new');
+            $('.submit-form').removeClass('save-update');
+        }
+
         $('.modal-title').html('Ajouter une ville');
         $.ajax({
-            url: "{{ path('remi_ville_form', {'id': null }) }}",
+            url: Routing.generate('remi_ville_form', { id: $currentTown, '_locale': locale }),
             type: 'GET',
             success: function (result) {
                 $(".modal-body").html(result);
@@ -81,13 +98,16 @@
         });
     });
 
-    $('body').on('click', '.update-form', function(e) {
-        let id = e.target.dataset.id;
+    $('body').on('click', '.save-update', function(e) {
         $.ajax({
-            url: Routing.generate('remi_ville_update', { id: id, '_locale': locale }),
+            url: Routing.generate('remi_ville_update', { id: $currentTown, '_locale': locale }),
             type: 'POST',
+            dataType: "json",
+            data: $('form').serialize(),
             success: function (result) {
-                $(".modal-body").html(result);
+                $currentLine.replaceWith(buildTr(result));
+                $('#myModal').modal('hide');
+                $(".success-message").html("{{ 'notice.town.update'|trans }}");
             }
         });
     });
