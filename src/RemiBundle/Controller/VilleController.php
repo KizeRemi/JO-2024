@@ -11,6 +11,7 @@ use RemiBundle\Form\VilleType;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class VilleController extends Controller
 {
@@ -36,14 +37,8 @@ class VilleController extends Controller
     /**
      * @Route("/villes/add", name="remi_ville_add")
      */
-    public function addAction(Request $request)
+    public function addAction(Request $request, SerializerInterface $serializer)
     {
-        // En théorie, le serializer est configuré dans un fichier de config dans le cas d'une vraie API
-        // pour éviter de faire ça a chaque fois
-        $encoders = array(new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
         $ville = new Ville();
         $form = $this->createForm(VilleType::class, $ville);
         $form->handleRequest($request);        
@@ -83,6 +78,14 @@ class VilleController extends Controller
         $form = $this->createForm(VilleType::class, $ville);
         
         return $this->render('RemiBundle:Ville:form.html.twig',[ 'form' => $form->createView()]);;
+    }
+
+    /**
+     * @Route("/villes/update/{id}", name="remi_ville_update")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        // TODO
     }
 
     /**
