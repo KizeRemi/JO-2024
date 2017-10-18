@@ -1,0 +1,104 @@
+{% extends 'RemiBundle::base.html.twig' %}
+{% block title %}Liste des villes{% endblock %}
+
+{% block body %}
+    <h1>Liste des villes</h1>
+    <button type="button" class="call-form btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Nouveau
+    </button>
+    <div class="success-message">
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>{{ 'tab.header.name'|trans }}</th>
+                <th>{{ 'tab.header.action'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody class="tbody-ville">
+        {% for ville in villes %}
+            <tr>
+                <td>{{ ville.nom }}</td>
+                <td><button class="update-form" data-id="{{ ville.id }}">Modifier</button><button class="remove-town" data-id="{{ ville.id }}">Supprimer</button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table><br>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="error-message">
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="save-form btn btn-primary">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.save-form').click(function (e) {
+        $.ajax({
+            url: '{{ path("remi_ville_add") }}',
+            type: 'POST',
+            dataType: "json",
+            data: $('form').serialize(),
+            success: function (result) {
+                $(".tbody-ville").append("<tr>"+
+                                            "<td>"+result.nom+"</td>"+
+                                            "<td>"+
+                                                "<button data-id="+result.id+">Modifier</button>"+
+                                            "</td>"+
+                                            "</tr>" );
+                $('#myModal').modal('hide');
+                $(".success-message").html("{{ 'notice.town.add'|trans }}");
+            },
+            error: function (result) {
+                $('.error-message').html(result.responseJSON);
+            }
+        });
+    });
+
+    $('.call-form').click(function (e) {
+        $('.modal-title').html('Ajouter une ville');
+        $.ajax({
+            url: "{{ path('remi_ville_form', {'id': null }) }}",
+            type: 'GET',
+            success: function (result) {
+                $(".modal-body").html(result);
+            }
+        });
+    });
+
+    $('body').on('click', '.update-form', function(e) {
+        let id = e.target.dataset.id;
+        // fonctionne pas à cause de l'id car jquery ça pue
+        $.ajax({
+            url: "{{ path('remi_ville_form', {'id': "id" }) }}",
+            type: 'POST',
+            success: function (result) {
+                $(".modal-body").html(result);
+            }
+        });
+    });
+
+    $('body').on('click', '.remove-town', function(e) {
+        let id = e.target.dataset.id;
+        $.ajax({
+            url: "{{ path('remi_ville_form', {'id': "id" }) }}",
+            type: 'DELETE',
+            success: function (result) {
+                $(".modal-body").html(result);
+            }
+        });
+    });
+</script>
+{% endblock %}

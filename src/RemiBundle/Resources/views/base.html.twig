@@ -3,29 +3,27 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %} Jeux olympiques Paris 2024 {% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
-        {% block stylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+               {% block stylesheets %}
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-
     </head>
     <body class="container">
         <div id="header">
-            <div id="menu">
-                <ul>
-                    <li>
-                        <a href="{{ path('remi_athlete_index') }}">{{ 'menu.athlete'|trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('remi_pays_index') }}">{{ 'menu.country'|trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('remi_discipline_index') }}">{{ 'menu.discipline'|trans }}</a>
-                    </li>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">JO-2024</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('remi_athlete_index') }}">{{ 'menu.athlete'|trans }}</a></li>
+                    <li><a href="{{ path('remi_pays_index') }}">{{ 'menu.country'|trans }}</a></li>
+                    <li><a href="{{ path('remi_discipline_index') }}">{{ 'menu.discipline'|trans }}</a></li>
                 </ul>
-                <br class="clearfix" />
             </div>
+        </nav>
         </div>
         {% for message in app.flashes('notice') %}
             <div class="flash-notice alert alert-success">
@@ -33,7 +31,5 @@
             </div>
         {% endfor %}
         {% block body %}{% endblock %}
-
-        {% block javascripts %}{% endblock %}
     </body>
 </html>

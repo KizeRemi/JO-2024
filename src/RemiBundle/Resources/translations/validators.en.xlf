@@ -9,6 +9,10 @@
                 <source>form.error.notblank</source>
                 <target>This value could not be blank.</target>
             </trans-unit>
+            <trans-unit id="c3e6921702a45101df4965d74720fc21" resname="form.error.name.notblank">
+                <source>form.error.name.notblank</source>
+                <target>This field name could not be blank.</target>
+            </trans-unit>
             <trans-unit id="10e6921702a45fa1df4965d74720fc21" resname="form.error.filepng">
                 <source>form.error.filepng</source>
                 <target>You should only upload a file with the extension .PNG</target>

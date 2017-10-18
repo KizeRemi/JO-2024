@@ -165,6 +165,18 @@
                 <source>form.placeholder.discipline</source>
                 <target>Choisir une discipline...</target>
             </trans-unit>
+            <trans-unit id="de5716862d565b02c389848f54767a93" resname="notice.town.add">
+                <source>notice.town.add</source>
+                <target>La ville a été ajoutée.</target>
+            </trans-unit>
+            <trans-unit id="de5816862d565b02c389848f54767a94" resname="notice.town.update">
+                <source>notice.town.update</source>
+                <target>La ville a été modifiée.</target>
+            </trans-unit>
+            <trans-unit id="de5916862d565b02c389848f54767a95" resname="notice.town.delete">
+                <source>notice.town.delete</source>
+                <target>La ville a été supprimée.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -9,6 +9,10 @@
                  <source>form.error.notblank</source>
                  <target>Ce champ ne peut être vide.</target>
             </trans-unit>
+            <trans-unit id="c3e6921702a45111df4965d74720fc21" resname="form.error.name.notblank">
+                <source>form.error.name.notblank</source>
+                <target>Le champ nom ne peut pas être vide.</target>
+            </trans-unit>
             <trans-unit id="10e6921702a45fa1df4965d74720fc21" resname="form.error.filepng">
                 <source>form.error.filepng</source>
                 <target>Vous ne pouvez uniquement transférer un fichier avec l'extension .PNG</target>
