@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use RemiBundle\Entity\Ville;
 use RemiBundle\Form\VilleType;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class VilleController extends Controller
 {
@@ -19,40 +18,19 @@ class VilleController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $ville = new Ville();
         $villes = $em->getRepository('RemiBundle:Ville')->findAll();
 
-        $form = $this->createForm(VilleType::class, $ville);
-
         return $this->render('RemiBundle:Ville:index.html.twig', [
-            'villes' => $villes,
-            'form'   => $form->createView(),
+            'villes' => $villes
         ]);
     }
 
     /**
      * @Route("/villes/add", name="remi_ville_add", options = { "expose" = true })
      */
-    public function addAction(Request $request, SerializerInterface $serializer)
+    public function addAction(Request $request)
     {
-        $ville = new Ville();
-        $form = $this->createForm(VilleType::class, $ville);
-        $form->handleRequest($request);        
-        
-        // Les assert vont s'occuper de gérer la validité des données. 
-        if($form->isValid()){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($ville);
-            $em->flush();
-            
-            // Le serializer transforme l'objet Ville en json, oklm
-            $jsonContent = $serializer->serialize($ville, 'json');  
-            $response = new Response($jsonContent, 200);
-            return $response;
-        } 
-    
-        return new JsonResponse($form->getErrors(true)[0]->getMessage(), 400);
+        return $this->container->get('remi.ville_handler')->post($request);
     }
 
     /**
@@ -60,6 +38,7 @@ class VilleController extends Controller
      */
     public function getFormAction(Request $request, $id = null)
     {
+        // Methode dégueulasse qui n'est pas sensé exister dans une API Rest
         $em = $this->getDoctrine()->getManager();
 
         //dégueu
@@ -76,23 +55,9 @@ class VilleController extends Controller
     /**
      * @Route("/villes/update/{id}", name="remi_ville_update", options = { "expose" = true })
      */
-    public function updateAction(Request $request, SerializerInterface $serializer, $id)
+    public function updateAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $ville = $em->getRepository('RemiBundle:Ville')->find($id);
-        $form = $this->createForm(VilleType::class, $ville);
-        $form->handleRequest($request);        
-
-        if($form->isValid()){
-            $em->persist($ville);
-            $em->flush();
-
-            $jsonContent = $serializer->serialize($ville, 'json');  
-            $response = new Response($jsonContent, 200);
-            return $response;
-        } 
-    
-        return new JsonResponse($form->getErrors(true)[0]->getMessage(), 400);
+        return $this->container->get('remi.ville_handler')->patch($id, $request);
     }
 
     /**
@@ -100,11 +65,6 @@ class VilleController extends Controller
      */
     public function removeAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $ville = $em->getRepository('RemiBundle:Ville')->find($id);
-        $em->remove($ville);
-        $em->flush();
-
-        return new JsonResponse([], 200);
+        return $this->container->get('remi.ville_handler')->delete($id);
     }
 }

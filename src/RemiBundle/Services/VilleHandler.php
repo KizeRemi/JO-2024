@@ -36,10 +36,25 @@ class VilleHandler
         return $this->processForm($ville, $request, 'POST');
     }
 
-    public function patch($id, $request) {
+    public function patch($id, Request $request) {
         $ville = $this->em->getRepository('RemiBundle:Ville')->find($id);
+        if (!$ville) {
+            return new JsonResponse('Not found', 404);
+        }
 
         return $this->processForm($ville, $request, 'POST');
+    }
+
+    public function delete($id) {
+        $ville = $this->em->getRepository('RemiBundle:Ville')->find($id);
+        if (!$ville) {
+            return new JsonResponse('Not found', 404);
+        }
+
+        $this->em->remove($ville);
+        $this->em->flush();
+
+        return new JsonResponse([], 200);
     }
 
     private function processForm(Ville $ville, Request $request, $method)
@@ -50,13 +65,12 @@ class VilleHandler
         if($form->isValid()){
             $this->em->persist($ville);
             $this->em->flush();
-            
-            // Le serializer transforme l'objet Ville en json, oklm
+
             $jsonContent = $this->serializer->serialize($ville, 'json');  
             $response = new Response($jsonContent, 200);
             return $response;
         } 
-    
+
         return new JsonResponse($form->getErrors(true)[0]->getMessage(), 400);
     }
 }

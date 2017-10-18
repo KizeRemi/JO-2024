@@ -17,6 +17,10 @@
                 <source>menu.country</source>
                 <target>Countries</target>
             </trans-unit>
+            <trans-unit id="de2716862d565b02c389848f90767a64" resname="menu.town">
+                <source>menu.town</source>
+                <target>Towns</target>
+            </trans-unit>
             <trans-unit id="de3216862d565b02c389848f54767a64" resname="country.title">
                 <source>country.title</source>
                 <target>Update of country %countryName%</target>
@@ -36,6 +40,10 @@
             <trans-unit id="de6416862d565b02c389848f54767a64" resname="disciplines.list">
                 <source>disciplines.list</source>
                 <target>List of disciplines</target>
+            </trans-unit>
+            <trans-unit id="de6416862d565b02c389848f59267a64" resname="towns.list">
+                <source>towns.list</source>
+                <target>List of towns</target>
             </trans-unit>
             <trans-unit id="de7416862d565b02c389848f54767a64" resname="form.label.lastname">
                 <source>form.label.lastname</source>
@@ -144,6 +152,10 @@
             <trans-unit id="de7616862d565b02c389848f54767a64" resname="tab.header.candidates">
                 <source>tab.header.candidate</source>
                 <target>Candidates</target>
+            </trans-unit>
+            <trans-unit id="de7816862d565b02c389948f54767a64" resname="form.button.new">
+                <source>form.button.new</source>
+                <target>New</target>
             </trans-unit>
             <trans-unit id="de8016862d565b02c389848f54767a64" resname="form.button.delete">
                 <source>form.button.delete</source>
