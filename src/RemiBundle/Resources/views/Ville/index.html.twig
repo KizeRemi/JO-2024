@@ -120,17 +120,19 @@
     });
 
     $('body').on('click', '.remove-town', function(event) {
-        let id = event.target.dataset.id;
-        $.ajax({
-            url: Routing.generate('remi_ville_delete', { id: id, '_locale': locale }),
-            type: 'DELETE',
-            success: function (result) {
-                $(".modal-body").html(result);
-                let tr = $(event.target).parent().parent().remove();
-                $(".success-message").html("{{ 'notice.town.delete'|trans }}");
-                $('.success-message').show();
-            }
-        });
+        if(confirm("{{ 'notice.warning.delete'|trans }}")){
+            let id = event.target.dataset.id;
+            $.ajax({
+                url: Routing.generate('remi_ville_delete', { id: id, '_locale': locale }),
+                type: 'DELETE',
+                success: function (result) {
+                    $(".modal-body").html(result);
+                    let tr = $(event.target).parent().parent().remove();
+                    $(".success-message").html("{{ 'notice.town.delete'|trans }}");
+                    $('.success-message').show();
+                }
+            });
+        }
     });
 </script>
 {% endblock %}

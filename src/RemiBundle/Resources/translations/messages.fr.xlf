@@ -189,6 +189,10 @@
                 <source>notice.town.delete</source>
                 <target>La ville a été supprimée.</target>
             </trans-unit>
+            <trans-unit id="de5916862d565b02c389821f54767a99" resname="notice.warning.delete">
+                <source>notice.warning.delete</source>
+                <target>Voulez-vous supprimer?</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
